@@ -1,7 +1,7 @@
 Účetnictví Himlarová
 ====
 
-první verze RSS systému
+beta verze RSS systému
 
 obsahuje:
   - komunikaci s databází (users/contents)
