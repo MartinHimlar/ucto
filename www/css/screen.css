@@ -1,0 +1,223 @@
+body {
+	font: 16px/1.5 Georgia, Verdana, Arial;
+	margin: 0 auto;
+	background-color: #fff;
+	color: #000;
+    background-image: url('../images/noise.png'); 
+}
+
+header {  
+        background-color: rgba(72, 130, 207, 0.28);
+        margin: 0px;
+        border-bottom: #49B6FF 2px solid;
+}
+
+header > table{
+    margin: auto;
+    color: #fff;
+    text-shadow: 1px 1px 0px #215AA5;
+}
+
+.hlavicka{
+    //background-image: url('../images/logo.png');
+    text-align: center;
+    margin:  auto;
+    border: none;
+    width: 400px;
+    height: 162px;
+}
+
+nav{
+    	width: 58%;
+	font-size: 14px;
+        font-family: Verdana;
+        font-weight: bold;
+        text-align: center;
+    	border-color: #49B6FF;
+    	border-width: 1px 1px 0px 1px;
+    	border-style: solid;
+    	padding: 0.1% 1% 0.1% 1%;
+    	background-color: #295392;   
+        margin: 0px auto;
+    	color: #49B6FF;
+}
+
+nav li {
+	display: inline;
+}
+
+figure{
+    	width: 58%;
+	padding: 1%;
+	text-align: left;
+	text-shadow: 2px 2px 3px #cccccc;
+        margin: 0px auto;
+    	border-color: #0A2C98;
+    	border-width: 0px 1px 1px 1px;
+    	border-style: solid;
+    	box-shadow: 5px 6px 15px #9AA2BB;
+        background-color: #fff;   
+        min-height: 600px;
+        
+}
+
+footer {
+	font-size: 11px;
+	text-align: center;
+	padding: 10px 0px 10px 0px;
+        position: inherit;
+        width: 100%;
+}
+
+#ajax-spinner {
+	margin: 15px 0 0 15px;
+	padding: 13px;
+	background: white url('../images/spinner.gif') no-repeat 50% 50%;
+	font-size: 0;
+	z-index: 123456;
+	display: none;
+}
+
+div.flash {
+	color: black;
+	background: #FFF9D7;
+	border: 1px solid #E2C822;
+	padding: 5px;
+	margin: 1em 0;
+        text-align: center;
+        text-shadow: none;
+}
+
+a[href^="error:"] {
+	background: red;
+	color: white;
+}
+
+form th, form td {
+	vertical-align: top;
+	font-weight: normal;
+}
+
+form th {
+	text-align: right;
+}
+
+form .required label {
+	font-weight: bold;
+}
+
+form .error {
+	color: #D00;
+	font-weight: bold;
+}
+
+html.js .jshidden {
+	display: none;
+}
+
+h1, h2 {
+	color: #3484D2;
+	font-size: 1.9em;
+	text-align: center;
+	font-weight: normal;
+}
+
+h1 a {
+	color: #3484D2;
+}
+
+h2 {
+	font-size: 1.4em;
+}
+
+.date {
+    color: #999;
+    text-align: center;
+    font-variant: small-caps;
+    font-size: .8em;
+    letter-spacing: 3px;
+    margin: 0 0 -1em;
+}
+
+.footer {
+	border-top: 1px solid #CCC;
+	margin: 2em 0;
+	padding-top: 1em;
+	text-align: center;
+}
+
+.menu_a:link{
+	color: #fff;
+	text-decoration: none;
+        margin: 0px 7px 0px 7px;
+}
+
+.menu_a:visited{
+	color: #fff;	
+	text-decoration: none;
+        margin: 0px 7px 0px 7px;
+}
+
+.menu_a:hover{
+	color: #fff;
+	text-decoration: none;	
+        margin: 0px 7px 0px 7px;
+        text-shadow: 2px 2px 6px #49B6FF;
+}
+
+.menu_active{
+	color: #71DFFF;
+	text-decoration: none;	
+        margin: 0px 7px 0px 7px;
+}
+
+.editovat{
+	color: #3484D2;
+	text-decoration: none;
+        margin: 0px 7px 0px 7px;
+}
+
+.editovat:link{
+	color: #3484D2;
+	text-decoration: none;
+        margin: 0px 7px 0px 7px;
+}
+
+.editovat:visited{
+	color: #3484D2;	
+	text-decoration: none;
+        margin: 0px 7px 0px 7px;
+}
+
+.editovat:hover{
+	color: #3484D2;
+	text-decoration: none;	
+        margin: 0px 7px 0px 7px;
+        text-shadow: 2px 2px 6px #49B6FF;
+}
+
+.sudy{
+    background-color: #D4E8FF;
+}
+td{
+    padding: 0px 5px 0px 5px;
+    border: none;
+    text-align: center;
+}
+th{
+    padding: 0px 5px 0px 5px;
+    text-align: center;
+}
+
+.sudy:hover {
+    background-color: #ffef7f;
+}
+
+ .lichy:hover{
+    background-color: #ffef7f;
+}
+
+#zobraz{
+    display: none;
+    height: 25px;
+}

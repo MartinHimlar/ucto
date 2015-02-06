@@ -1,0 +1,8 @@
+{block content}
+<h1>Editace webové stránky</h1>
+
+{ifset $toEditHomepage}
+    {control editHomepageForm}
+    {else}
+    {control pageForm}
+{/ifset}

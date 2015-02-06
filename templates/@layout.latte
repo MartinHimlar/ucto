@@ -1,0 +1,76 @@
+{**
+ * @param string   $basePath web base path
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>{*ifset #title}{include title|striptags} | {/ifset*}Účetnictví Himlarová</title>
+        
+	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css">
+	<link rel="stylesheet" media="print" href="{$basePath}/css/print.css">
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+	{block head}{/block}
+</head>
+
+<body>
+        
+	<script> document.documentElement.className+=' js' </script>
+
+	
+        
+    <header>
+        <table>
+            <tr>
+                <td n:class="hlavicka"></td>
+                {if !$user->loggedIn}<td><div>{control signInForm}</div></td>{/if}
+            </tr>
+        </table>
+        
+    <nav>
+        <ul class="navig">
+            {ifset #nav}{include nav}{/ifset}
+            
+            {if $user->loggedIn}
+                <li><a href="#" id="schovavac" class="menu_a">Administrace</a>
+                    <ul id="zobraz">
+                        <li><a n:href="Web:" {ifCurrent Web:*}class="menu_active"{else}class="menu_a"{/ifCurrent}>Správce stránek</a></li>
+                        <li><a n:href="Uzivatele: " {ifCurrent Uzivatele:*}class="menu_active"{else}class="menu_a"{/ifCurrent}>Správce uživatelů</a></li>
+                        <li><a n:href="Sign:out" n:class="menu_a">Odhlásit</a></li>
+                    </ul>
+                </li>
+            {/if}
+        </ul>
+    </nav>
+           
+    </header> 
+    <figure>
+        <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+        {include content}
+    </figure>
+
+    <footer>
+        <p>Vytvořil &COPY;<a href="mailto:m.himlar@gmail.com" target="_BLANK">Martin Himlar</a> pro <a href="http://www.himlarova.cz">www.himlarova.cz</a></p>
+    </footer>
+
+	{block scripts}
+	<script src="{$basePath}/js/jquery.js"></script>
+	<script src="{$basePath}/js/jquery.nette.js"></script>
+	<script src="{$basePath}/js/netteForms.js"></script>
+	<script src="{$basePath}/js/main.js"></script>
+        <script src="{$basePath}/scripts/pokus.js"></script>
+        <script src="{$basePath}/scripts/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript">
+        tinymce.init({
+            language : 'cs',
+            mode: "specific_textareas",
+            editor_selector: "mceEditor",
+            entity_encoding: "raw"
+         });
+        </script>
+	{/block}
+</body>
+</html>
