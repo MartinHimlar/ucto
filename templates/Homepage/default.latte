@@ -1,0 +1,19 @@
+{block nav}
+
+    {foreach $menuItems as $item}
+        <li><a n:href="Homepage:default id=>$item->link" {ifCurrent Homepage:default id=>$item->link}class="menu_active"{else}class="menu_a"{/ifCurrent}>{$item->title}</a></li>
+
+    {/foreach}
+{/block}
+
+
+{block content}
+        {foreach $items as $item}
+            {ifCurrent Homepage:default id=>$item->link}
+                <h1>{$item->title}</h1>
+                <div>{$item->content|noescape}</div>
+                    {if $user->loggedIn}
+                        <a n:href="Web:edit id=>$item->link" n:class="editovat">[# EDITOVAT #]</a>
+                    {/if}
+            {/ifCurrent}
+        {/foreach}

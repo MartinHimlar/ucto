@@ -1,0 +1,6 @@
+{block content}
+                <h1>{$item->title}</h1>
+                <div>{$item->content|noescape}</div>
+                    {if $user->loggedIn}
+                        <a n:href="Web:edit id=>$item->link" n:class="editovat">[# EDITOVAT #]</a>
+                    {/if}
