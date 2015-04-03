@@ -8,9 +8,12 @@
 
 namespace App\Presenters;
 
+use App\Model\ContentManager;
 use Nette,
     Nette\Utils\Strings,
     App\model;
+use Nette\Database\Context;
+use Nette\Utils\Paginator;
 
 /**
  * Description of WebPresenters
@@ -18,8 +21,11 @@ use Nette,
  * @author PC-3
  */
 class WebPresenter extends BasePresenter {
-    
+
+	/** @var ContentManager  */
     private $stranky;
+
+	/** @var Paginator  */
     protected $strankovac;
     
     public function startup() {
@@ -31,9 +37,9 @@ class WebPresenter extends BasePresenter {
             }
     }
     
-    public function __construct(Nette\Database\Context $database, \App\Model\ContentManager $pages) {
+    public function __construct(Context $database, ContentManager $pages) {
         parent::__construct($database, $pages);
-        $this->strankovac = new Nette\Utils\Paginator;
+        $this->strankovac = new Paginator;
         $this->strankovac->setItemCount($pages->findAll()->count());
         $this->strankovac->setItemsPerPage(10);
         $this->stranky = $pages;

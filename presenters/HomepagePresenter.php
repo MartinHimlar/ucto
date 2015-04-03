@@ -3,7 +3,6 @@
 namespace App\Presenters;
 
 use Nette,
-    Nette\Utils\Strings,
 	App\Model;
 
 
@@ -19,14 +18,14 @@ class HomepagePresenter extends BasePresenter
         $this->pages = $pages;
     }
         
-	public function renderDefault($id)
+	public function renderDefault($site)
 	{
             if($this->pages->findAll()->count() > 0){
                 $this->template->menuItems = $this->pages->findEnabled(true);
                 
-                if($id != null){
+                if($site != null){
                     $this->template->items = $this->pages->findEnabled(true);
-                    $this->template->id = $id;
+                    $this->template->site = $site;
                 }
                 else{
                     if($this->pages->findByDefault()->count() > 0){

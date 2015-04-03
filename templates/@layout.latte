@@ -1,7 +1,3 @@
-{**
- * @param string   $basePath web base path
- * @param array    $flashes  flash messages
- *}
 
 <!DOCTYPE html>
 <html>
@@ -10,8 +6,9 @@
 
 	<title>{*ifset #title}{include title|striptags} | {/ifset*}Účetnictví Himlarová</title>
         
-	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css">
-	<link rel="stylesheet" media="print" href="{$basePath}/css/print.css">
+	<link rel="stylesheet" href="{$basePath}/css/bootstrap.css">
+	<link rel="stylesheet" href="{$basePath}/css/bootstrap-theme.css">
+	<link rel="stylesheet" href="{$basePath}/css/style.css">
 	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
 	{block head}{/block}
 </head>
@@ -19,58 +16,62 @@
 <body>
         
 	<script> document.documentElement.className+=' js' </script>
+	<div class="container">
+		<header class="page-header clearfix">
+			<div class="jumbotron">
+				<div class="logo pull-left"></div>
+				{if !$user->loggedIn}<div class="badge pull-right">{control signInForm}</div>{/if}
+				<div class="clearfix"></div>
+			</div>
 
-	
-        
-    <header>
-        <table>
-            <tr>
-                <td n:class="hlavicka"></td>
-                {if !$user->loggedIn}<td><div>{control signInForm}</div></td>{/if}
-            </tr>
-        </table>
-        
-    <nav>
-        <ul class="navig">
-            {ifset #nav}{include nav}{/ifset}
-            
-            {if $user->loggedIn}
-                <li><a href="#" id="schovavac" class="menu_a">Administrace</a>
-                    <ul id="zobraz">
-                        <li><a n:href="Web:" {ifCurrent Web:*}class="menu_active"{else}class="menu_a"{/ifCurrent}>Správce stránek</a></li>
-                        <li><a n:href="Uzivatele: " {ifCurrent Uzivatele:*}class="menu_active"{else}class="menu_a"{/ifCurrent}>Správce uživatelů</a></li>
-                        <li><a n:href="Sign:out" n:class="menu_a">Odhlásit</a></li>
-                    </ul>
-                </li>
-            {/if}
-        </ul>
-    </nav>
-           
-    </header> 
-    <figure>
-        <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
-        {include content}
-    </figure>
+		</header>
+		<div class="navbar-collapse collapse">
+			<ul class="nav nav-tabs" role="tablist">
+				{ifset #nav}{include nav}{/ifset}
 
-    <footer>
-        <p>Vytvořil &COPY;<a href="mailto:m.himlar@gmail.com" target="_BLANK">Martin Himlar</a> pro <a href="http://www.himlarova.cz">www.himlarova.cz</a></p>
-    </footer>
+				{if $user->loggedIn}
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administrace <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li {ifCurrent Web:*}class="active"{/ifCurrent}>
+								<a n:href="Web:default">Správce stránek</a>
+							</li>
+							<li {ifCurrent Uzivatele:*}class="active"{/ifCurrent}>
+								<a n:href="Uzivatele:default">Správce uživatelů</a>
+							</li>
+							<li>
+								<a n:href="Sign:out">Odhlásit</a>
+							</li>
+						</ul>
+					</li>
+				{/if}
+			</ul>
+		</div>
+		<div class="jumbotron">
+			<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+			{include content}
+
+		</div>
+
+		<footer class="footer">
+			<p>Vytvořil &COPY;<a href="mailto:m.himlar@gmail.com" target="_BLANK">Martin Himlar</a> pro <a href="http://www.himlarova.cz">www.himlarova.cz</a></p>
+		</footer>
+	</div>
 
 	{block scripts}
-	<script src="{$basePath}/js/jquery.js"></script>
-	<script src="{$basePath}/js/jquery.nette.js"></script>
-	<script src="{$basePath}/js/netteForms.js"></script>
-	<script src="{$basePath}/js/main.js"></script>
-        <script src="{$basePath}/scripts/pokus.js"></script>
-        <script src="{$basePath}/scripts/tinymce/tinymce.min.js"></script>
-        <script type="text/javascript">
-        tinymce.init({
-            language : 'cs',
-            mode: "specific_textareas",
-            editor_selector: "mceEditor",
-            entity_encoding: "raw"
-         });
-        </script>
+		<script src="{$basePath}/js/jquery.js"></script>
+		<script src="{$basePath}/js/bootstrap.min.js"></script>
+		<script src="{$basePath}/js/jquery.nette.js"></script>
+		<script src="{$basePath}/js/netteForms.js"></script>
+		<script src="{$basePath}/js/main.js"></script>
+		<script src="{$basePath}/scripts/tinymce/tinymce.min.js"></script>
+		<script type="text/javascript">
+		tinymce.init({
+			language : 'cs',
+			mode: "specific_textareas",
+			editor_selector: "mceEditor",
+			entity_encoding: "raw"
+		 });
+		</script>
 	{/block}
 </body>
 </html>

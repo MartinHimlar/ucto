@@ -1,0 +1,48 @@
+header > .jumbotron {
+    background-color: #fff;
+}
+header > .jumbotron {
+    background-color: #fff;
+    box-shadow: #003366 1px 1px 10px;
+}
+header > .jumbotron > .badge {
+    width: 400px;
+    height: 162px;
+    margin: auto;
+    background-color: #afd9ee;
+    color: #000000;
+    box-shadow: #003366 2px 2px 5px;
+    padding: inherit;
+}
+.logo {
+    background-image : url('../images/logo.png');
+    text-align: center;
+    margin: auto;
+    border: none;
+    width: 400px;
+    height: 162px;
+}
+.jumbotron {
+    background-color: #afd9ee;
+}
+.table {
+    background-color: #fff;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+    border-color: #afd9ee;
+}
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus {
+    border-color: #afd9ee;
+    background-color: #afd9ee;
+}
+.nav-tabs {
+    border-color: #afd9ee;
+}
+.page-header {
+    padding-bottom: 0px;
+    border: none;
+    margin-bottom: 0px;
+}
