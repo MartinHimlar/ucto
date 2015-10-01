@@ -9,27 +9,28 @@ use Nette\Application\UI\Form;
 use Nette\Database\Context;
 use Nette\Security\AuthenticationException;
 
-
-/**
- * Base presenter for all application presenters.
- */
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
-	protected $database;
-	protected $pages;
+	const ROLE_ADMINISTRATOR = 3,
+		ROLE_OWNER = 2,
+		ROLE_REGISTERED = 1;
 
-
-	public function __construct(Context $database, ContentManager $pages)
-	{
-		$this->database = $database;
-		$this->pages = $pages;
-	}
+	/**
+	 * @inject Context
+	 * @var Context $database
+	 */
+	public $database;
+	/**
+	 * @inject ContentManager
+	 * @var ContentManager $pages
+	 */
+	public $pages;
 
 	/**
 	 * Sign-in form factory.
 	 * @return Form
 	 */
-	protected function createComponentSignInForm()
+	public function createComponentSignInForm()
 	{
 		$form = new Form;
 		$form->addText('username', 'Uživatelské jméno:')
@@ -62,15 +63,22 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 		}
 	}
 
-	public function isRole($role)
+	public function flashMessage($message, $type = 'info')
 	{
-
-		foreach ($this->getUser()->identity->getRoles() as $r) {
-			if ($role === $r) {
-				return true;
-			} else
-				return false;
+		switch ($type) {
+			case 'error':
+				$bootstrapType = 'alert-danger';
+				break;
+			case 'warning':
+				$bootstrapType = 'alert-warning';
+				break;
+			case 'success':
+				$bootstrapType = 'alert-success';
+				break;
+			default:
+				$bootstrapType = 'alert-info';
+				break;
 		}
-
+		parent::flashMessage($message, $bootstrapType);
 	}
 }

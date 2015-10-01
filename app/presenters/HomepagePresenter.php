@@ -11,13 +11,6 @@ use Nette,
  */
 class HomepagePresenter extends BasePresenter
 {
-    protected $pages;
-    
-    public function __construct(Nette\Database\Context $database, Model\ContentManager $pages) {
-        parent::__construct($database, $pages);
-        $this->pages = $pages;
-    }
-        
 	public function renderDefault($site)
 	{
             if($this->pages->findAll()->count() > 0){

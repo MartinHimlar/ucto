@@ -8,7 +8,7 @@
             {foreach $uzivatele as $uzivatel}
 				<tr>
                     <td>{$uzivatel->username}</td>
-                    <td>{$uzivatel->role}</td>
+                    <td>{if $uzivatel->role}{$uzivatel->ref('role')->name}{else}žádný{/if}</td>
                     <td>
                         {if ($activeUser === $uzivatel->id) || ($opravneni)}
                             <a n:href="Uzivatele:edit id=>$uzivatel->id"><img src="{$basePath}/images/change.png" alt="Změnit" /></a></td>

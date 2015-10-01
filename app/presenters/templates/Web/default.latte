@@ -11,10 +11,10 @@
                     <td>{$page->title}</td>
                     <td>{$page->link}</td>
                     <td>
-                        {if $page->zobraz}ANO{else}NE{/if}
+                        {if $page->show}ANO{else}NE{/if}
                     </td>
                     <td>
-                        {if $page->vychozi}ANO{else}NE{/if}
+                        {if $page->default}ANO{else}NE{/if}
                     </td>
                     <td><a n:href="Web:show id=>$page->link" target="_blank"><img src="{$basePath}/images/lupa.gif" alt="Zobrazit" /></a></td>
                     <td>
