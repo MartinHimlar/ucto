@@ -1,0 +1,30 @@
+{block content}
+    <fieldset class="uzivatele">
+        <legend>Správce uživatelů</legend>
+        <table class="table table-striped">
+            <tr>
+                <th>Uživatel</th><th>Přístup</th><th>Upravit</th><th>Smazat</th>
+            </tr>
+            {foreach $uzivatele as $uzivatel}
+				<tr>
+                    <td>{$uzivatel->username}</td>
+                    <td>{if $uzivatel->role}{$uzivatel->ref('role')->name}{else}žádný{/if}</td>
+                    <td>
+                        {if ($activeUser === $uzivatel->id) || ($opravneni)}
+                            <a n:href="Uzivatele:edit id=>$uzivatel->id"><img src="{$basePath}/images/change.png" alt="Změnit" /></a></td>
+                            <td>
+                                {if $opravneni}<a n:href="Uzivatele:delete id=>$uzivatel->id"><img src="{$basePath}/images/del.png" alt="Smazat" /></a>
+                            
+                            {else}
+                                   X 
+                            {/if}
+                            </td>
+                        {else}
+                            X</td><td>X
+                        {/if}
+                    </td>
+                </tr>
+            {/foreach}
+        </table>
+    </fieldset>
+            <a n:href="Uzivatele:Create" n:class="editovat">Vytvořit uživatele</a>

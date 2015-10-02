@@ -1,5 +1,8 @@
-log/
-temp/
-config/config.local.neon
-.idea/
-vendor/
+/log/
+/temp/
+/vendor/
+/.idea/*
+!.gitignore
+!.htaccess
+!web.config
+app/config/config.local.neon

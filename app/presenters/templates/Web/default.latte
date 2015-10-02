@@ -1,0 +1,36 @@
+{block content}
+    <fieldset class="uzivatele">
+        <legend>Správce stránek</legend>
+		<table class="table table-condensed">
+            <tr>
+                <th></th><th>Stránka</th><th>link</th><th>Povolená</th><th>Úvodní</th><th>Náhled</th><th>Upravit</th><th>Smazat</th>
+            </tr>
+            {foreach $items as $page}
+			<tr>
+                <td>{$iterator->counter}</td>
+                    <td>{$page->title}</td>
+                    <td>{$page->link}</td>
+                    <td>
+                        {if $page->show}ANO{else}NE{/if}
+                    </td>
+                    <td>
+                        {if $page->default}ANO{else}NE{/if}
+                    </td>
+                    <td><a n:href="Web:show id=>$page->link" target="_blank"><img src="{$basePath}/images/lupa.gif" alt="Zobrazit" /></a></td>
+                    <td>
+                        {if $opravneni}
+                            <a n:href="Web:edit id=>$page->link"><img src="{$basePath}/images/change.png" alt="Změnit" /></a></td>
+                            <td>
+                            <a n:href="Web:delete id=>$page->id"><img src="{$basePath}/images/del.png" alt="Smazat" /></a>
+                            </td>
+                        {else}
+                            X</td><td>X
+                        {/if}
+                    </td>
+                </tr>
+            {/foreach}
+        </table>{if !$str->first}<a n:href="Web:default str=>$str->page-1" n:class="editovat">Předchozí</a>{else}<font n:class="editovat">Předchozí</font>{/if} | {$str->page}/{$str->getPageCount()} |
+            {if !$str->last}<a n:href="Web:default str=>$str->page+1" n:class="editovat">Následující</a>{else}<font n:class="editovat">Následující</font>{/if}
+    </fieldset>
+            <a n:href="Web:create" n:class="editovat">Vytvořit stránku</a>
+            
