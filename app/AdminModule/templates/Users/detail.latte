@@ -1,0 +1,27 @@
+{block content}
+	<h3 n:inner-block="title">Detail uživatele</h3>
+{snippet userInfo}
+<dl class="dl-horizontal">
+	<dt>Přezdívka:</dt> <dd>{$row->nickname}</dd>
+
+	<dt>Jméno:</dt> <dd>{$row->name}</dd>
+
+	<dt>Přijmení:</dt> <dd>{$row->surname}</dd>
+
+	<dt>Email:</dt> <dd>{$row->email}</dd>
+
+	<dt>Oprávnění:</dt> <dd>{$row->roles->title}</dd>
+
+	<dt>Aktivní:</dt> <dd>
+		<a n:href="ChangePublic!, id=>$row->id" title="Změna aktivace účtu" class="btn btn-default btn-xs stateful ajax">{if $row->public}Zakázat{else}Povolit{/if}</a></dd>
+
+	<dt></dt>
+
+	<dd>
+		<a n:href="Users:edit $row->id" title="Editovat informace o uživateli" class="btn btn-primary">Upravit</a>
+		{if $row->id != $user->id}
+			<a n:href="Users:delete $row->id" title="Smazat uživatele" data-confirm="Opravdu smazat?" class="btn btn-danger">Smazat</a>
+		{/if}
+	</dd>
+</dl>
+{/snippet}

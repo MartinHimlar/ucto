@@ -1,0 +1,23 @@
+<ul class="nav nav-tabs" role="tablist">
+	<li class="{ifCurrent Homepage: }active{/ifCurrent}"><a n:href="Homepage: ">Hlavní stránka</a></li>
+	{if count($otherSites) > 0}
+		{foreach $otherSites as $site}
+			<li role="presentation" {ifCurrent Homepage:site id => $site->id}class="active"{/ifCurrent}>
+				<a n:href="Homepage:site id => $site->id">{$site->title}</a>
+			</li>
+		{/foreach}
+	{/if}
+	<li {ifCurrent Homepage:contacts}class="active"{/ifCurrent}><a n:href="Homepage:contacts">Kontakty</a></li>
+	{if $user->loggedIn}
+		<li><a n:href=":Front:Sign:out" class="visible-xs">Odhlásit</a></li>
+	{/if}
+
+	{if $user->loggedIn}
+		<ul class="nav nav-tabs navbar-right hidden-xs" role="tablist">
+			{if in_array('administrator', $user->roles) || in_array('Prodejce', $user->roles)}
+				<li class="hidden-xs"><a n:href=":Admin:Homepage:default" title="Administrace">Administrace</a></li>
+			{/if}
+			<li><a n:href=":Front:Sign:out">Odhlásit</a></li>
+		</ul>
+	{/if}
+</ul>

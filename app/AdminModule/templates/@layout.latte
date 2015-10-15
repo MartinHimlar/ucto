@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="cze">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="Nábytkové kování, Led">
+	<meta name="author" content="Martin Himlar">
+	<link rel="icon" href="{$basePath}/favicon.ico">
+
+	<title>{block title}{$title}{/block} | Administrace</title>
+	<link rel="stylesheet" media="print" href="{$basePath}/css/print.css">
+
+	<!-- Bootstrap core CSS -->
+	<link href="{$basePath}/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap theme -->
+	<link href="{$basePath}/css/bootstrap-theme.min.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="{$basePath}/css/styleAdmin.css" rel="stylesheet">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+
+<body role="document">
+
+	<script> document.documentElement.className += ' js' </script>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" n:href="Homepage:">Administrace</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				{include _include/@menu.latte}
+			</div>
+		</div>
+	</nav>
+	<div class="container theme-showcase" role="main">
+
+		<div class="jumbotron">
+			<div n:foreach="$flashes as $flash" class="alert {$flash->type}">{$flash->message}</div>
+			{block content}{/block}
+		</div>
+
+	</div>
+
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<!-- TinyMCE -->
+	<script type="text/javascript" src="{$basePath}/js/tinymce/tinymce.min.js"></script>
+
+	<script src="{$basePath}/js/bootstrap.min.js"></script>
+	<script src="{$basePath}/js/netteForms.js"></script>
+	<script src="{$basePath}/js/nette.ajax/nette.ajax.js"></script>
+	<script src="{$basePath}/js/nette.ajax/extensions/spinner.ajax.js"></script>
+	<script src="{$basePath}/js/nextras.datagrid.js"></script>
+	<script src="{$basePath}/js/main.js"></script>
+	<script src="{$basePath}/js/code.js"></script>
+	<script src="{$basePath}/js/admin/script.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="{$basePath}/js/ie10-viewport-bug-workaround.js"></script>
+
+	<script>
+		$(function () {
+			$('select[name=parent]').change(function () {
+				$.nette.ajax({
+					url: {link addCat},
+					data: {
+						'catId': $('select[name=parent]').val()
+					}
+				});
+			});
+
+			$('#siteTitle').change(function() {
+				$.nette.ajax({
+					url: {link addOther},
+					data: {
+						'siteTitle': $('#siteTitle').val()
+					}
+				});
+			});
+
+			tinymce.init({
+				selector: "#siteTextarea",
+				theme: "modern",
+				language : "cs",
+				width: 1000,
+				height: 300,
+				plugins: [
+					"advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+					"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+					"save table contextmenu directionality emoticons template paste textcolor"
+				],
+				toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+				style_formats: [
+					{ title: 'Bold text', inline: 'b' },
+					{ title: 'Red text', inline: 'span', styles: { color: '#ff0000' } },
+					{ title: 'Red header', block: 'h1', styles: { color: '#ff0000' } },
+					{ title: 'Example 1', inline: 'span', classes: 'example1' },
+					{ title: 'Example 2', inline: 'span', classes: 'example2' },
+					{ title: 'Table styles' },
+					{ title: 'Table row 1', selector: 'tr', classes: 'tablerow1' }
+				]
+			});
+		});
+	</script>
+</body>
+</html>
