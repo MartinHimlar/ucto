@@ -1,0 +1,39 @@
+{block content}
+	<h3 n:inner-block="title">{$siteTitle}</h3>
+{snippet formInput}
+	{form siteForm}
+		<ul class="errors" n:if="$form->hasErrors()">
+			<li n:foreach="$form->errors as $error">{$error}</li>
+		</ul>
+
+		<div class="form-inline">
+			<div class="form-group">
+				{label title /} {input title class=>'form-control ajax'}
+			</div>
+
+			<div class="form-group">
+				{label url /} {input url class=>'form-control'}
+			</div>
+
+			<div class="form-group" n:if="$id == 2">
+				{label map_url /} {input map_url class=>'form-control'}
+			</div>
+		</div>
+
+		<div class="form-group">
+			{label content /} {input content class=>'form->control'}
+		</div>
+
+		<div class="form-inline right">
+			{if !in_array($id, array('1','2','3'))}
+				<div class="form-group">
+					{label active /} {input active class=>'form-control'}
+				</div>
+			{/if}
+
+			<div class="form-group">
+				{input send}
+			</div>
+		</div>
+	{/form}
+{/snippet}

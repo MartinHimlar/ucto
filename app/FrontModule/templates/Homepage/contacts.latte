@@ -1,0 +1,17 @@
+{block title}
+	{$site->title}
+{/block}
+{block content}
+	{!$site->content}
+{if $map->map_url}
+<div class="text-center center-block">
+	<iframe src="{$map->map_url}" width="768" height="600" class="visible-lg-block" style="margin: auto;"></iframe><br/>
+	<small>
+		Zobrazit místo
+		<a href="{$map->map_url}" target="_blank">
+			účetnictví Himlarová
+		</a>
+		na větší mapě
+	</small>
+</div>
+{/if}

@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>{*ifset #title}{include title|striptags} | {/ifset*}Účetnictví Himlarová</title>
+        
+	<link rel="stylesheet" href="{$basePath}/css/bootstrap.css">
+	<link rel="stylesheet" href="{$basePath}/css/bootstrap-theme.css">
+	<link rel="stylesheet" href="{$basePath}/css/style.css">
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+	{block head}{/block}
+</head>
+
+<body>
+        
+	<script> document.documentElement.className+=' js' </script>
+	<div class="container">
+		<header class="page-header clearfix">
+			<div class="jumbotron">
+				{if !$user->loggedIn}
+					<div class="logo pull-left"></div>
+					<div class="badge pull-right">{control signInForm}</div>
+				{else}
+					<div class="logo"></div>
+				{/if}
+				<div class="clearfix"></div>
+			</div>
+
+		</header>
+
+		<div n:foreach="$flashes as $flash" class="alert {$flash->type}">{$flash->message}</div>
+
+		<div class="navbar-collapse collapse">
+				{include _include/@desktop_menu.latte}
+		</div>
+		<div class="jumbotron">
+			{include content}
+
+		</div>
+
+		<footer class="footer">
+			<p>Vytvořil &COPY;<a href="mailto:m.himlar@gmail.com" target="_BLANK">Martin Himlar</a> pro <a href="http://www.himlarova.cz">www.himlarova.cz</a></p>
+		</footer>
+	</div>
+
+	{block scripts}
+		<script src="{$basePath}/js/jquery.js"></script>
+		<script src="{$basePath}/js/bootstrap.min.js"></script>
+		<script src="{$basePath}/js/jquery.nette.js"></script>
+		<script src="{$basePath}/js/netteForms.js"></script>
+		<script src="{$basePath}/js/main.js"></script>
+	{/block}
+</body>
+</html>

@@ -1,0 +1,39 @@
+<ul class="nav navbar-nav">
+
+	<li {ifCurrent Homepage:*}class="dropdown active" {else}class="dropdown"{/ifCurrent}>
+		<a n:href="Homepage:" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Stránky
+			<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu" role="menu">
+			<li><a n:href="Homepage:editOther id => 1">Hlavní stránka</a></li>
+			<li><a n:href="Homepage:editOther id => 2">Kde nás najdete?</a></li>
+			<li><a n:href="Homepage:editOther id => 3">Kontakty</a></li>
+			<li class="divider"></li>
+			<li><a n:href="Homepage:other">Ostatní</a></li>
+		</ul>
+	</li>
+
+	<li {ifCurrent Users:*}class="dropdown active" {else}class="dropdown"{/ifCurrent}>
+		<a n:href="Users:" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Uživatelé
+			<span class="caret"></span></a>
+		<ul class="dropdown-menu" role="menu">
+			<li><a n:href="Users:add">Přidat</a></li>
+			<li><a n:href="Users:">Přehled</a></li>
+		</ul>
+	</li>
+
+	<li {ifCurrent Roles:*}class="dropdown active" {else}class="dropdown disabled"{/ifCurrent}>
+		<a n:href="Users:" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Přístupy
+			<span class="caret"></span></a>
+		<ul class="dropdown-menu" role="menu">
+			<li><a n:href="Roles:">Uživatelská práva</a></li>
+			<li><a n:href="Roles:">Uživatelské skupiny</a></li>
+		</ul>
+	</li>
+</ul>
+
+
+<ul class="nav navbar-nav navbar-right">
+	<li><a n:href=":Front:Homepage: ">Pohled zákaznika</a></li>
+	<li><a n:href=":Front:Sign:out">Odhlásit</a></li>
+</ul>

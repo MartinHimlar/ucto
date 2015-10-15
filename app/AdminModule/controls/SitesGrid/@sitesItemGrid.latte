@@ -1,0 +1,21 @@
+{redefine #row-actions}
+	<a href="{plink Homepage:editOther, $row->id}" class="btn btn-primary btn-xs">Detail</a>
+	<a href="{plink Homepage:deleteOther, $row->id}" title="Smazat soubor" data-confirm="Opravdu smazat?" class="btn btn-danger btn-xs">Smazat</a>
+{/redefine}
+
+{redefine cell-id}
+	<a href="{plink Homepage:editOther, $row->id}">{$row->id}</a>
+{/redefine}
+
+{redefine cell-title}
+	{$row->title}
+{/redefine}
+
+{redefine cell-active}
+{if $row->active}ANO{else}NE{/if}
+{/redefine}
+
+{redefine cell-default}
+	{if $row->default}ANO{else}NE{/if}
+{/redefine}
+
