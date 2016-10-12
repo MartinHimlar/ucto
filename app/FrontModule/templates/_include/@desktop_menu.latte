@@ -13,11 +13,9 @@
 	{/if}
 
 	{if $user->loggedIn}
-		<ul class="nav nav-tabs navbar-right hidden-xs" role="tablist">
-			{if in_array('administrator', $user->roles) || in_array('Prodejce', $user->roles)}
-				<li class="hidden-xs"><a n:href=":Admin:Homepage:default" title="Administrace">Administrace</a></li>
-			{/if}
-			<li><a n:href=":Front:Sign:out">Odhlásit</a></li>
-		</ul>
+			<li class="navbar-right"><a n:href=":Front:Sign:out">Odhlásit</a></li>
+		{if in_array('administrator', $user->roles) || in_array('Prodejce', $user->roles)}
+			<li class="hidden-xs navbar-right"><a n:href=":Admin:Homepage:default" title="Administrace">Administrace</a></li>
+		{/if}
 	{/if}
 </ul>

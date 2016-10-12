@@ -5,13 +5,11 @@
 	{!$site->content}
 {if $map->map_url}
 <div class="text-center center-block">
-	<iframe src="{$map->map_url}" width="768" height="600" class="visible-lg-block" style="margin: auto;"></iframe><br/>
+	<iframe src="{$map->map_url}" width="768" height="600" frameborder="0" style="border:0; margin: auto;" allowfullscreen class="visible-lg-block"></iframe><br/>
 	<small>
-		Zobrazit místo
 		<a href="{$map->map_url}" target="_blank">
-			účetnictví Himlarová
+			Zobrazit místo účetnictví Himlarová na větší mapě
 		</a>
-		na větší mapě
 	</small>
 </div>
 {/if}
