@@ -1,3 +1,2 @@
 # ucto
-username to manage site: user
-password: 12589user
+basic site using FW bootstrap
